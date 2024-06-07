@@ -1,0 +1,291 @@
+:root {
+    --blanco: #ffffff;
+    --negro: #212121;
+    --primario: #ffc107;
+    --secundario: #0097a7;
+    --gris: #757575;
+    --grisClaro: #dfe9f3;
+}
+
+/*aplicar un modelo de diseño de caja natural a todos los elementos, pero permitiendo que los componentes cambien sin afectar el tamaño en pixeles*/
+html {
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 16px;
+    /*1 rem es igual a 10 px */
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);
+    /* degradado de fondo de la aplicacion desde abajo hacia arriba empezando con gris claro*/
+}
+
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+.titulo {
+    font-size: 3.8rem;
+
+    .krub-regular {
+        font-family: "Krub", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .krub-bold {
+        font-family: "Krub", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+}
+
+.titulo span {
+    font-size: 2rem;
+}
+
+.contenedor {
+    max-width: 120rem;
+    /*el max sirve para cuando se miniminize la pantalla no se corte los textos y se acomoden a la pantalla */
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+
+}
+
+.boton {
+    /*configuracion boton contactar y enviar con su respectivo responsive*/
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 5rem;
+    width: 50%;
+    text-align: center;
+    border: none;
+}
+
+@media (min-width:768px) {
+    .boton {
+        width: auto;
+    }
+    .boton:hover {
+        cursor: pointer;
+    }
+
+    .sombra {
+        /*aqui creamos un estilo de tabla con la aplicacion css matic sobre lo cual va a quedar todo lo que incluye "mis servicios"  */
+        -webkit-box-shadow: 0px 5px 15px 4px rgba(99, 99, 99, 0.54);
+        -moz-box-shadow: 0px 5px 15px 4px rgba(99, 99, 99, 0.54);
+        box-shadow: 0px 5px 15px 4px rgba(99, 99, 99, 0.54);
+        background-color: var(--blanco);
+        padding: 2rem;
+        border-radius: 1rem;
+    }
+}
+.w-sn-100 {
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .w-sn-100 {
+        width: auto;
+    }
+}
+.flex {
+    display: flex;
+}
+.alinear-derecha {
+    justify-content: flex-end;
+}
+
+
+.nav-bg {
+    background-color: var(--secundario);
+}
+
+.navegacion-principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /*sapara los textos de la barra de navegacion para que no queden juntos  */
+}
+
+@media (min-width: 768px) {
+    .navegacion-principal {
+        flex-direction: row;
+    }
+
+    /*utilizamos responsive para que la barra de navegacion ciuando llegue a menos de 768 pixeles se coloquen en columna para que se puedan visualizar en una tablet ya que es mas pequeña su pantalla   */
+}
+
+.navegacion-principal a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.navegacion-principal a:hover {
+    background-color: var(--primario);
+    /*rellena de color amarillo alrededor del texto cuando se señala  */
+    color: var(--negro);
+    /* coloca  de color negro cuando se señala el texto */
+}
+
+.hero {
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* el cover sirve para que la imagen se acomode al ancho de la pantalla*/
+    height: 450px;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.contenido-hero {
+    /*con rgba se le da la trasparencia a la imagen de 0.6 y los 2 100% es para que cubra toda la imagen el color que va a estar ensima de la imagen*/
+    position: absolute;
+    background-color: rgba(0, 0, 0, .6);
+    width: 100%;
+    height: 100%;
+    /*centramos el texto y la imagen que estan sobre la imagen principal*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-hero h2,
+.contenido-hero p {
+    color: var(--blanco);
+}
+
+.ubicacion {
+    /*colocamos la imagen pequeña de ubicacion junto a popayan-cauca*/
+    display: flex;
+    align-items: flex-end;
+}
+
+@media (min-width: 768px) {
+    .servicios {
+        display: grid;
+        grid-template-columns: 33.3% 33.3% 33.3%;
+        column-gap: 1rem;
+    }
+}
+
+.servicios,
+.navegacion-principal,
+.formulario{/*barra de desplazamiento se detiene en cada seccion */
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.servicio h3{
+    color: var(--secundario);
+    font-weight: normal;
+}
+.servicio p{
+    line-height: 2;
+}
+.servicio .iconos {/*aqui se realizan los circulos amarillos */
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+/**formulario**/
+.formulario{
+    background-color: var(--gris);
+    width: min(60rem, 100%); /**utiliza el valor mas pequeño**/
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset {
+    border: none;
+}
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+@media (min-width: 768px) {
+.contenedor-campos{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto 20rem;
+    column-gap: 1rem;
+} 
+}
+.campo:nth-child(3),
+.campo:nth-child(4) {
+    grid-column: 1/3;
+}
+
+.campo{
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;   
+}
+.campo textarea {
+    height: 15rem;/*tamaño de campo del mensaje en el formulario*/
+}
+.input-text{
+    width: 100%;    
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+.footer{
+    text-align: center;
+}
+
+
